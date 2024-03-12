@@ -2,12 +2,13 @@ name: Feed Cron
 
 on:
   schedule:
-    - cron: "0 22 * * *" # UTC
+    - cron: '0 */1 * * *' # UTC
   workflow_dispatch:
 
 jobs:
   get-feed:
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     env:
       NOTION_KEY: ${{ secrets.NOTION_KEY }}
       NOTION_READER_DATABASE_ID: ${{ secrets.NOTION_READER_DATABASE_ID }}
